@@ -1,0 +1,59 @@
+﻿@page "/CadastrarUsuarios"
+@inject NavigationManager navigationManager
+@inject UsuariosAPI usuarioAPI
+
+<MudPaper Class="px-8 pt-2 pb-4 mx-12 my-8" Justify="Justify.Center">
+
+    <MudText Class="mt-8" Typo="Typo.h4">Cadastro do Usuário</MudText>
+
+    <MudForm>
+
+        <MudTextField Class="mt-4" T="string" Placeholder="Nome do Usuário"
+                      Variant="Variant.Outlined"
+                      @bind-Value="nome"
+                      Required="true"
+                      RequiredError="Campo obrigatório." />
+
+        <MudTextField Class="mt-4" T="string" Placeholder="Insira a senha"
+                      Variant="Variant.Outlined"
+                      @bind-Value="senha"
+                      Lines="4"
+                      Required="true"
+                      RequiredError="Campo obrigatório." />
+
+        <MudTextField Class="mt-4" T="string" Placeholder="Insira o E-mail"
+                      Variant="Variant.Outlined"
+                      @bind-Value="email"
+                      Lines="4"
+                      Required="true"
+                      RequiredError="Campo obrigatório." />
+
+        <div class="d-flex align-center justify-space-between mt-4">
+            <MudButton Variant="Variant.Filled"
+                       @onclick="Cadastrar"
+                       Color="Color.Success"
+                       Class="ml-auto">
+                Cadastrar
+            </MudButton>
+        </div>
+
+    </MudForm>
+
+
+</MudPaper>
+
+
+@code {
+
+    private string? nome;
+    private string? senha;
+    private string? email;
+
+    private async Task Cadastrar()
+    {
+        var usuario = new UsuariosRequest(nome!, senha!, email!);
+        await usuarioAPI.AddUsuarioAsync(usuario);
+        navigationManager.NavigateTo("/Usuarios");
+    }
+
+}

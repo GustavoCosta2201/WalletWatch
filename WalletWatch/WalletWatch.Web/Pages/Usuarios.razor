@@ -1,0 +1,52 @@
+﻿@page "/Usuarios"
+@inject UsuariosAPI usuarioAPI
+
+<MudStack Class="mt-4 mb-4" Row="true" Justify="Justify.SpaceBetween">
+    <MudText Class="mb-4" Typo="Typo.h4">Usuários cadastrados</MudText>
+    <MudPagination Count="@totalPaginas" SelectedChanged="PaginaMudou"></MudPagination>
+</MudStack>
+
+@if (usuariosPorPagina is not null)
+{
+    <MudGrid>
+        @foreach (var usuario in usuariosPorPagina)
+        {
+            <MudItem xs="3">
+                <MudText>@usuario.nome</MudText>
+            </MudItem>
+        }
+    </MudGrid>
+}
+
+@code {
+    private ICollection<UsuarioResponse>? usuarios;
+    private int tamanho = 8;
+    private int TotalItens;
+    private int totalPaginas;
+    private ICollection<UsuarioResponse>? usuariosPorPagina;
+    private int paginaAtual = 1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        usuarios = await usuarioAPI.GetUsuarioAsync();
+
+        if (usuarios != null)
+        {
+            usuarios = usuarios.OrderByDescending(u => u.id).ToList(); 
+            TotalItens = usuarios.Count();
+            totalPaginas = (int)Math.Ceiling((TotalItens * 1.0) / tamanho);
+            PaginaMudou(1);
+        }
+    }
+
+      private void PaginaMudou(int pageNumber)
+     {
+
+        paginaAtual = pageNumber;
+        var indice = (paginaAtual - 1) * tamanho;
+        usuariosPorPagina = usuarios!
+            .Skip(indice)
+            .Take(tamanho)
+            .ToList();
+    }
+}

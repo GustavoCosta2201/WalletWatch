@@ -1,0 +1,160 @@
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.deps.json
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.runtimeconfig.json
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.exe
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\appsettings.Development.json
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\appsettings.json
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.staticwebassets.runtime.json
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.exe
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.deps.json
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.runtimeconfig.json
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.pdb
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Azure.Core.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Azure.Identity.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Castle.Core.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\OpenAI_API.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Memory.Data.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Runtime.Caching.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.pdb
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.csproj.AssemblyReference.cache
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.AssemblyInfoInputs.cache
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.AssemblyInfo.cs
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.csproj.CoreCompileInputs.cache
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.MvcApplicationPartsAssemblyInfo.cs
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.MvcApplicationPartsAssemblyInfo.cache
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets.build.json
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets.development.json
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets\msbuild.WalletWatch.API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets\msbuild.build.WalletWatch.API.props
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WalletWatch.API.props
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WalletWatch.API.props
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets.pack.json
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\scopedcss\bundle\WalletWatch.API.styles.css
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWa.5BA572DC.Up2Date
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\refint\WalletWatch.API.dll
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.pdb
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.genruntimeconfig.cache
+C:\3- Estudos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\ref\WalletWatch.API.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\appsettings.Development.json
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\appsettings.json
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.deps.json
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.runtimeconfig.json
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.exe
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.staticwebassets.runtime.json
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.exe
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.deps.json
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.runtimeconfig.json
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.API.pdb
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Azure.Core.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Azure.Identity.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Castle.Core.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\OpenAI_API.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Memory.Data.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Runtime.Caching.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\bin\Debug\net8.0\WalletWatch.pdb
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.csproj.AssemblyReference.cache
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.AssemblyInfoInputs.cache
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.AssemblyInfo.cs
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.csproj.CoreCompileInputs.cache
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets.build.json
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets.development.json
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets\msbuild.WalletWatch.API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets\msbuild.build.WalletWatch.API.props
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WalletWatch.API.props
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WalletWatch.API.props
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\scopedcss\bundle\WalletWatch.API.styles.css
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWa.5BA572DC.Up2Date
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\refint\WalletWatch.API.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.pdb
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\WalletWatch.API.genruntimeconfig.cache
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch.API\obj\Debug\net8.0\ref\WalletWatch.API.dll
