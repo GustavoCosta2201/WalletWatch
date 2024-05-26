@@ -1,7 +1,20 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<div>
+    <MudChart ChartType="ChartType.StackedBar" ChartSeries="@Series" @bind-SelectedIndex="Index" LegendPosition="@LegendPosition" XAxisLabels="@XAxisLabels" Width="100%" Height="350px" Position.Top></MudChart>
+</div>
 
-<h1>Walletwatch Web!</h1>
 
-Bem-Vindo ao Gerenciamento de Finanças!!
+@code {
+    private int Index = -1;
+
+    private Position LegendPosition = Position.Bottom;
+
+    public List<ChartSeries> Series = new List<ChartSeries>()
+    {
+        new ChartSeries() { Name = "United States", Data = new double[] { 40, 20, 25, 27, 46, 60, 48, 80, 15 } },
+        new ChartSeries() { Name = "Germany", Data = new double[] { 19, 24, 35, 13, 28, 15, 13, 16, 31 } },
+        new ChartSeries() { Name = "Sweden", Data = new double[] { 8, 6, 11, 13, 4, 16, 10, 16, 18 } },
+    };
+    public string[] XAxisLabels = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep" };
+}

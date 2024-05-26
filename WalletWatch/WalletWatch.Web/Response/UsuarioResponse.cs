@@ -1,10 +1,10 @@
 ﻿namespace WalletWatch.Web.Response
 {
-    public record class UsuarioResponse(int id, string nome, string senha, string email)
+    public record class UsuarioResponse(int Id_usuario, string nome, string senha, string email)
     {
         public override string ToString()
         {
-            return $"{nome} - {senha}";
+            return $"{Id_usuario} - {nome} - {senha}";
         }
     }
 }

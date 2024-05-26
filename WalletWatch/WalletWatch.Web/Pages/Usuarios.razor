@@ -1,21 +1,41 @@
 ﻿@page "/Usuarios"
 @inject UsuariosAPI usuarioAPI
+@inject NavigationManager navigationManager
+@inject IDialogService DialogService
 
 <MudStack Class="mt-4 mb-4" Row="true" Justify="Justify.SpaceBetween">
     <MudText Class="mb-4" Typo="Typo.h4">Usuários cadastrados</MudText>
-    <MudPagination Count="@totalPaginas" SelectedChanged="PaginaMudou"></MudPagination>
+    <MudPagination Count="totalPaginas" SelectedChanged="PaginaSelecionada"></MudPagination>
 </MudStack>
 
 @if (usuariosPorPagina is not null)
 {
-    <MudGrid>
-        @foreach (var usuario in usuariosPorPagina)
-        {
-            <MudItem xs="3">
-                <MudText>@usuario.nome</MudText>
-            </MudItem>
-        }
-    </MudGrid>
+    <MudTable Items="usuariosPorPagina" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
+        <HeaderContent>
+            <MudTh>Código</MudTh>
+            <MudTh>Nome</MudTh>
+            <MudTh>Senha</MudTh>
+            <MudTh>E-mail</MudTh>
+            <MudTh></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Código">@context.Id_usuario</MudTd>
+            <MudTd DataLabel="Nome">@context.nome</MudTd>
+            <MudTd DataLabel="Senha">@context.senha</MudTd>
+            <MudTd DataLabel="E-mail">@context.email</MudTd>
+            <MudTd>
+                <MudTooltip Text="Adicionar">
+                    <MudFab Color="Color.Success" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" @onclick="AdicionarUsuario" />
+                </MudTooltip>
+                <MudTooltip Text="Editar">
+                    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" @onclick="() => OnEditUsuario(context.Id_usuario) " />
+                </MudTooltip>
+                <MudTooltip Text="Deletar">
+                    <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" @onclick="@(() => OnDeleteUsuarioClicked(context.Id_usuario))" />
+                </MudTooltip>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
 }
 
 @code {
@@ -26,22 +46,25 @@
     private ICollection<UsuarioResponse>? usuariosPorPagina;
     private int paginaAtual = 1;
 
+
+
     protected override async Task OnInitializedAsync()
     {
         usuarios = await usuarioAPI.GetUsuarioAsync();
 
         if (usuarios != null)
         {
-            usuarios = usuarios.OrderByDescending(u => u.id).ToList(); 
+            usuarios = usuarios.OrderByDescending(u => u.Id_usuario).ToList();
             TotalItens = usuarios.Count();
             totalPaginas = (int)Math.Ceiling((TotalItens * 1.0) / tamanho);
             PaginaMudou(1);
         }
     }
 
-      private void PaginaMudou(int pageNumber)
-     {
 
+
+    private void PaginaMudou(int pageNumber)
+    {
         paginaAtual = pageNumber;
         var indice = (paginaAtual - 1) * tamanho;
         usuariosPorPagina = usuarios!
@@ -49,4 +72,83 @@
             .Take(tamanho)
             .ToList();
     }
+
+
+
+    private void PaginaSelecionada(int pagina)
+    {
+        PaginaMudou(pagina);
+    }
+
+
+
+    public void AdicionarUsuario()
+    {
+        navigationManager.NavigateTo("/CadastrarUsuarios");
+    }
+
+
+
+    private async Task OnEditUsuario(int id)
+    {
+        var parameters = new DialogParameters
+    {
+        { nameof(Popup.ContentText), "Deseja editar esse usuário?" },
+        { nameof(Popup.ButtonText), "Editar" },
+        { nameof(Popup.Color), Color.Warning }
+    };
+
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = DialogService.Show<Popup>("Confirmar Edição", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled)
+        {
+            navigationManager.NavigateTo($"/EditarUsuarios/{id}");
+        }
+    }
+
+
+
+    private async Task OnDeleteUsuarioClicked(int id)
+    {
+        await DeletarUsuario(id);
+    }
+
+
+
+    private async Task DeletarUsuario(int id)
+    {
+        var parameters = new DialogParameters
+    {
+        { nameof(Popup.ContentText), "Você realmente quer excluir esse usuário?" },
+        { nameof(Popup.ButtonText), "Deletar" },
+        { nameof(Popup.Color), Color.Error }
+    };
+
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = DialogService.Show<Popup>("Confirmar Deleção", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled)
+        {
+            var success = await usuarioAPI.DeleteUsuarioAsync(id);
+
+            if (success)
+            {
+                var usuarioARemover = usuarios!.FirstOrDefault(u => u.Id_usuario == id);
+                if (usuarioARemover != null)
+                {
+                    usuarios!.Remove(usuarioARemover);
+                    TotalItens = usuarios.Count();
+                    totalPaginas = (int)Math.Ceiling((TotalItens * 1.0) / tamanho);
+                    PaginaMudou(paginaAtual);
+                    StateHasChanged(); 
+                }
+            }
+        }
+    }
+
 }

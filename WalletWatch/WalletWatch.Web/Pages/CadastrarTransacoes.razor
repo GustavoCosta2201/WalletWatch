@@ -1,0 +1,146 @@
+﻿@page "/CadastrarTransacoes"
+@inject NavigationManager navigationManager
+@inject TransacoesAPI transacoesAPI
+@inject UsuariosAPI usuariosAPI
+@inject CategoriaAPI CategoriasAPI
+
+<MudPaper Class="px-8 pt-6 pb-8 mx-12 my-8" Elevation="3" Square="true">
+    <MudText Class="mt-8" Typo="Typo.h4" Color="Color.Primary">Cadastro de Transações</MudText>
+
+    @if (!string.IsNullOrEmpty(MensagemAlerta))
+    {
+        <MudAlert Severity="Severity.Error" Variant="Variant.Filled">@MensagemAlerta</MudAlert>
+    }
+
+    @if (TransacaoSalvaComSucesso)
+    {
+        <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Transação salva com sucesso!</MudAlert>
+    }
+
+    <MudForm Class="mt-6">
+        <MudTextField Class="mt-4" T="string" Placeholder="Descrição da transação"
+                      InputType="InputType.Text"
+                      @bind-Value="descricao"
+                      Required="true"
+                      RequiredError="Campo obrigatório."
+                      Icon="Icons.Outlined.Category" />
+
+        <MudTextField Class="mt-4" Label="Valor da transação" T="decimal" Placeholder="Valor da Transação"
+                      InputType="InputType.Number"
+                      @bind-Value="valor"
+                      Required="true"
+                      RequiredError="Campo obrigatório."
+                      Icon="Icons.Outlined.Description" />
+
+        <MudDatePicker Label="Data da transação" Value="data" DateFormat="dd/MM/yyyy" Required="true" />
+
+        <MudSelect T="int" Label="Categorias" @bind-Value="id_categoria" Class="mt-4" Required="true" RequiredError="Campo obrigatório.">
+            @if (Categorias != null && Categorias.Any())
+            {
+                @foreach (var categoria in Categorias)
+                {
+                    <MudSelectItem Value="@categoria.Id_Categoria">@categoria.nome</MudSelectItem>
+                }
+            }
+            else
+            {
+                <MudSelectItem Value="0">Nenhuma categoria encontrada</MudSelectItem>
+            }
+        </MudSelect>
+
+        <MudSelect T="int" Label="Usuário" @bind-Value="id_usuario" Class="mt-4" Required="true" RequiredError="Campo obrigatório.">
+            @if (usuarios != null && usuarios.Any())
+            {
+                @foreach (var usuario in usuarios)
+                {
+                    <MudSelectItem Value="@usuario.Id_usuario">@usuario.nome</MudSelectItem>
+                }
+            }
+            else
+            {
+                <MudSelectItem Value="0">Nenhum usuário encontrado</MudSelectItem>
+            }
+        </MudSelect>
+
+        <div class="d-flex justify-end mt-6">
+            <MudButton Variant="Variant.Filled"
+                       StartIcon="@Icons.Material.Filled.Save"
+                       @onclick="Cadastrar"
+                       Color="Color.Success">
+                Cadastrar
+            </MudButton>
+        </div>
+    </MudForm>
+</MudPaper>
+
+@code {
+    private string? descricao;
+    private decimal valor;
+    private DateOnly? data = DateOnly.MaxValue;
+    private int id_usuario;
+    private int id_categoria;
+    private ICollection<UsuarioResponse>? usuarios;
+    private ICollection<CategoriaResponse>? Categorias;
+    private string MensagemAlerta { get; set; } = "";
+    private bool TransacaoSalvaComSucesso { get; set; } = false;
+    public CultureInfo ptbr = CultureInfo.GetCultureInfo("PT-BR");
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+
+            usuarios = await usuariosAPI.GetUsuarioAsync();
+            Categorias = await CategoriasAPI.GetCategoriaAsync();
+
+            if (usuarios != null && usuarios.Any())
+            {
+                usuarios = usuarios.OrderByDescending(u => u.Id_usuario).ToList();
+            }
+            else
+            {
+                Console.WriteLine("Nenhum usuário encontrado.");
+            }
+
+            if (Categorias != null && Categorias.Any())
+            {
+                Categorias = Categorias.OrderByDescending(c => c.Id_Categoria).ToList();
+            }
+            else
+            {
+                Console.WriteLine("Nenhuma categoria encontrada.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao carregar usuários ou categorias: {ex.Message}");
+        }
+    }
+
+    public async Task Cadastrar()
+    {
+        if (CamposVazios())
+        {
+            MensagemAlerta = "Por favor, preencha todos os campos.";
+            return;
+        }
+
+        try
+        {
+            TransacaoSalvaComSucesso = true;
+            var transacao = new TransacoesRequest(id_usuario, id_categoria, descricao!, valor, data);
+            await transacoesAPI.AddTransacoesAsync(transacao);
+            await Task.Delay(2500);
+            navigationManager.NavigateTo("/Transacoes");
+        }
+        catch (Exception ex)
+        {
+            MensagemAlerta = $"Erro ao salvar a transação: {ex.Message}";
+        }
+    }
+
+    private bool CamposVazios()
+    {
+        return string.IsNullOrEmpty(descricao) || valor == 0 || data == null || id_usuario == 0 || id_categoria == 0;
+    }
+}

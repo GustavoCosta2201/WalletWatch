@@ -158,3 +158,4 @@ C:\Projetos\WalletWatch\WalletWatch\WalletWatch\obj\Debug\net6.0\refint\WalletWa
 C:\Projetos\WalletWatch\WalletWatch\WalletWatch\obj\Debug\net6.0\WalletWatch.pdb
 C:\Projetos\WalletWatch\WalletWatch\WalletWatch\obj\Debug\net6.0\WalletWatch.genruntimeconfig.cache
 C:\Projetos\WalletWatch\WalletWatch\WalletWatch\obj\Debug\net6.0\ref\WalletWatch.dll
+C:\Projetos\WalletWatch\WalletWatch\WalletWatch\obj\Debug\net6.0\WalletWatch.sourcelink.json

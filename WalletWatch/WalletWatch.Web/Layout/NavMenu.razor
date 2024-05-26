@@ -1,8 +1,38 @@
-﻿﻿﻿<MudNavMenu Class="mud-width-full mt-4">
+﻿ ﻿﻿<MudNavMenu Class="mud-width-full mt-4">
 
     <MudNavLink Href="/" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-    <MudNavGroup Title="Usuarios" Icon="@Icons.Material.Filled.Money" Expanded="true">
+
+    <MudNavGroup Title="Usuarios" Icon="@Icons.Material.Filled.People" Expanded="false">
         <MudNavLink Href="/Usuarios">Exibir</MudNavLink>
         <MudNavLink Href="/CadastrarUsuarios">Cadastrar</MudNavLink>
     </MudNavGroup>
+
+    <MudNavGroup Title="Categorias" Icon="@Icons.Material.Filled.Category" Expanded="false">
+        <MudNavLink Href="/Categorias">Exibir</MudNavLink>
+        <MudNavLink Href="/CadastrarCategoria">Cadastrar</MudNavLink>
+    </MudNavGroup>
+
+    <MudNavGroup Title="Transações" Icon="@Icons.Material.Filled.DensitySmall" Expanded="false">
+        <MudNavLink Href="/Transacoes">Exibir</MudNavLink>
+        <MudNavLink Href="/CadastrarTransacoes">Cadastrar</MudNavLink>
+    </MudNavGroup>
 </MudNavMenu>
+
+@* 
+<MudPaper Elevation="2">
+    <MudToolBar>
+
+
+        <MudIconButton Icon="@Icons.Material.Outlined.People" Color="Color.Inherit" Class="mr-5" Expanded="true" />
+        <MudIconButton Icon="@Icons.Material.Outlined.Add" />
+        <MudIconButton Icon="@Icons.Material.Outlined.Edit" />
+        <MudIconButton Icon="@Icons.Material.Outlined.Remove" Color="Color.Inherit" />
+        <MudIconButton Icon="@Icons.Material.Outlined.Settings" Color="Color.Inherit" />
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Outlined.Notifications" />
+        <MudIconButton Icon="@Icons.Material.Outlined.PushPin" />
+        <MudIconButton Icon="@Icons.Material.Outlined.PeopleAlt" />
+        <MudIconButton Icon="@Icons.Material.Outlined.MoreVert" Color="Color.Inherit" />
+    </MudToolBar>
+</MudPaper>
+ *@

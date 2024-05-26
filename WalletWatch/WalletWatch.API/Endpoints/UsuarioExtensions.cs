@@ -11,10 +11,14 @@ namespace WalletWatch.API.Endpoints
 
         public static void AddEndpointsUsuarios(this WebApplication app)
         {
+
+
             app.MapGet("/Usuarios", ([FromServices] DAL<Usuarios> dal) =>
             {
                 return Results.Ok(dal.Listar());
             });
+
+
 
             app.MapGet("/Usuarios/{nome}", ([FromServices] DAL<Usuarios> DAL, string nome) =>
             {
@@ -30,6 +34,23 @@ namespace WalletWatch.API.Endpoints
                 }
             });
 
+
+            app.MapGet("/Usuarios/{id:int}", ([FromServices] DAL<Usuarios> DAL, int id) =>
+            {
+                var recuperarid = DAL.RecuperarPor(i => i.Id_Usuario == id);
+
+                if(recuperarid != null)
+                {
+                    return Results.Ok(recuperarid);
+                }
+                else
+                {
+                    return Results.NotFound(id);
+                }
+            });
+
+
+
             app.MapPost("/Usuarios/", ([FromServices] DAL<Usuarios> DAL, UsuariosRequest request) =>
             {
                 var usuarios = new Usuarios(request.nome, request.senha, request.email);
@@ -38,6 +59,8 @@ namespace WalletWatch.API.Endpoints
 
                 return Results.Ok(usuarios);
             });
+
+
 
             app.MapDelete("/Usuarios/{id}", ([FromServices] DAL<Usuarios> DAL, int id) => {
 
@@ -55,9 +78,11 @@ namespace WalletWatch.API.Endpoints
             });
 
 
-            app.MapPut("/Usuarios/", ([FromServices] DAL<Usuarios> DAL, [FromBody] UsuariosRequestEdit requestEdit) =>
+
+
+            app.MapPut("/Usuarios/{id}", ([FromServices] DAL<Usuarios> DAL, int id, [FromBody] UsuariosRequestEdit requestEdit) =>
             {
-            var UsuarioAtualizar = DAL.RecuperarPor(u => u.Id_Usuario == requestEdit.id);
+            var UsuarioAtualizar = DAL.RecuperarPor(u => u.Id_Usuario == id);
 
                 if (UsuarioAtualizar is null)
                 {
@@ -70,7 +95,7 @@ namespace WalletWatch.API.Endpoints
                     UsuarioAtualizar.Email = requestEdit.email;
 
                     DAL.Atualizar(UsuarioAtualizar);
-                    return Results.Ok();
+                    return Results.Ok(UsuarioAtualizar);
                 }
             });
 

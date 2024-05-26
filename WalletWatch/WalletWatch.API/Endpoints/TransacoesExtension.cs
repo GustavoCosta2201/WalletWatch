@@ -29,6 +29,22 @@ namespace WalletWatch.API.Endpoints
                 }
             });
 
+
+            app.MapGet("/Transacoes/{id:int}", ([FromServices] DAL<Transacoes> DAL, int id) =>
+            {
+                var recuperarid = DAL.RecuperarPor(i => i.Id_Transacao == id);
+
+                if (recuperarid != null)
+                {
+                    return Results.Ok(recuperarid);
+                }
+                else
+                {
+                    return Results.NotFound(id);
+                }
+            });
+
+
             app.MapPost("/Transacoes/", ([FromServices] DAL<Transacoes> DAL, TransacoesRequest request) =>
             {
 
@@ -54,10 +70,10 @@ namespace WalletWatch.API.Endpoints
 
             });
 
-            app.MapPut("/Transacoes/", ([FromServices] DAL<Transacoes> DAL, TransacoesRequestEdit requestEdit) =>
+            app.MapPut("/Transacoes/{id_transacao}", ([FromServices] DAL<Transacoes> DAL, int id_transacao, TransacoesRequestEdit requestEdit) =>
             {
 
-                var recuperar = DAL.RecuperarPor(a => a.Id_Transacao == requestEdit.id_transacao);
+                var recuperar = DAL.RecuperarPor(a => a.Id_Transacao == id_transacao);
 
                 if(recuperar != null)
                 {

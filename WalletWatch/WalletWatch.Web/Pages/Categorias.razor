@@ -1,0 +1,157 @@
+﻿@page "/Categorias"
+@inject CategoriaAPI categoriaAPI
+@inject NavigationManager navigationManager
+@inject IDialogService DialogService
+@using System.Data.SqlClient;
+
+<MudStack Class="mt-4 mb-4" Row="true" Justify="Justify.SpaceBetween">
+    <MudText Class="mb-4" Typo="Typo.h4">Categorias Cadastradas</MudText>
+    <MudPagination Count="@totalPaginas" SelectedChanged="PaginaMudou"></MudPagination>
+</MudStack>
+
+@if (CategoriaPorPagina is not null)
+{
+    <MudTable Items="CategoriaPorPagina" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
+        <HeaderContent>
+            <MudTh>Código</MudTh>
+            <MudTh>Descrição</MudTh>
+            <MudTh>Tipo</MudTh>
+            <MudTh></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Código">@context.Id_Categoria</MudTd>
+            <MudTd DataLabel="Descrição">@context.nome</MudTd>
+            <MudTd DataLabel="Tipo">@context.tipo</MudTd>
+            <MudTd>
+                <MudTooltip Text="Adicionar">  <MudFab Color="Color.Success" StartIcon="@Icons.Material.Filled.Add" @onclick="AdicionarCategoria" Size="Size.Small" /> </MudTooltip>
+                <MudTooltip Text="Editar">  <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" @onclick="() => OnEditCategoria(context.Id_Categoria) " /></MudTooltip>
+                <MudTooltip Text="Deletar">  <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" @onclick="() => OnDeleteCategoriaClicked(context.Id_Categoria)"> </MudFab></MudTooltip>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+
+@code {
+    private ICollection<CategoriaResponse>? categorias;
+    private int tamanho = 8;
+    private int TotalItens;
+    private int totalPaginas;
+    private ICollection<CategoriaResponse>? CategoriaPorPagina;
+    private int paginaAtual = 1; 
+    private string MensagemAlerta = string.Empty;
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        categorias = await categoriaAPI.GetCategoriaAsync();
+
+        if (categorias != null)
+        {
+            categorias = categorias.OrderByDescending(u => u.Id_Categoria).ToList();
+            TotalItens = categorias.Count();
+            totalPaginas = (int)Math.Ceiling((TotalItens * 1.0) / tamanho);
+            PaginaMudou(1);
+        }
+    }
+
+
+
+    private void PaginaMudou(int pageNumber)
+    {
+
+        paginaAtual = pageNumber;
+        var indice = (paginaAtual - 1) * tamanho;
+        CategoriaPorPagina = categorias!
+            .Skip(indice)
+            .Take(tamanho)
+            .ToList();
+    }
+
+
+
+    private void AdicionarCategoria()
+    {
+        navigationManager.NavigateTo("/CadastrarCategoria");
+    }
+
+
+
+    private async Task OnEditCategoria(int id)
+    {
+        var parameters = new DialogParameters
+    {
+        { nameof(Popup.ContentText), "Deseja editar essa categoria?" },
+        { nameof(Popup.ButtonText), "Editar" },
+        { nameof(Popup.Color), Color.Warning }
+    };
+
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = DialogService.Show<Popup>("Confirmar Edição", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled)
+        {
+            navigationManager.NavigateTo($"/EditarCategoria/{id}");
+        }
+    }
+
+
+
+    private async Task OnDeleteCategoriaClicked(int id)
+    {
+        await DeletarCategoria(id);
+    }
+
+
+
+    private async Task DeletarCategoria(int id)
+    {
+        var parameters = new DialogParameters
+        {
+          {nameof(Popup.ContentText), "Você realmente quer excluir essa categoria?"},
+          {nameof(Popup.ButtonText), "Deletar"},
+          {nameof(Popup.Color), Color.Error}
+
+        };
+
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = DialogService.Show<Popup>("Confirmar Deleção", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled)
+        {
+
+            try
+            {
+                var sucess = await categoriaAPI.DeleteCategoriaAsync(id);
+
+                if (sucess)
+                {
+                    var CategoriaRemover = categorias!.FirstOrDefault(c => c.Id_Categoria == id);
+
+                    if (CategoriaRemover != null)
+                    {
+                        categorias!.Remove(CategoriaRemover);
+                        TotalItens = categorias.Count();
+                        totalPaginas = (int)Math.Ceiling((TotalItens * 1.0) / tamanho);
+                        PaginaMudou(paginaAtual);
+                        StateHasChanged();
+                    }
+                }
+            }
+            catch (Exception ex) when (ex is SqlException sqlEx && sqlEx.Number == 547)
+            {
+                // Captura de exceção específica de violação de restrição de chave estrangeira
+                MensagemAlerta = "Não é possível excluir esta categoria porque existem transações relacionadas a ela.";
+            }
+         
+
+        }
+
+
+    }
+}

@@ -1,0 +1,106 @@
+﻿@page "/EditarCategoria/{id:int}"
+@inject NavigationManager navigationManager
+@inject CategoriaAPI categoriaAPI
+
+<MudPaper Class="px-8 pt-6 pb-8 mx-12 my-8" Elevation="3" Square="true">
+    <MudText Class="mt-8" Typo="Typo.h4" Color="Color.Primary">Editar Categoria</MudText>
+
+    @if (!string.IsNullOrEmpty(MensagemAlerta) && CamposVazios())
+    {
+        <MudAlert Severity="Severity.Error" Variant="Variant.Filled">@MensagemAlerta!</MudAlert>
+    }
+
+    <MudForm Class="mt-6">
+
+        <MudTextField Class="mt-4" T="string" Placeholder="Nome da Categoria"
+                      InputType="InputType.Text"
+                      @bind-Value="categoria.nome"
+                      Required="true"
+                      RequiredError="Campo obrigatório."
+                      Icon="Icons.Outlined.Category" />
+
+        <MudTextField Class="mt-4" T="string" Placeholder="Insira o tipo da Categoria"
+                      InputType="InputType.Text"
+                      HelperText="Tipo da Categoria. Ex: Compra, Carro, Mercado...etc"
+                      @bind-Value="categoria.tipo"
+                      Required="true"
+                      RequiredError="Campo obrigatório."
+                      Icon="Icons.Outlined.Description" />
+
+        <div class="d-flex justify-end mt-6">
+            <MudButton Variant="Variant.Filled"
+                       StartIcon="@Icons.Material.Filled.Save"
+                       @onclick="Atualizar"
+                       Color="Color.Warning">
+                Atualizar
+            </MudButton>
+        </div>
+
+        @if (!string.IsNullOrEmpty(MensagemAlerta))
+        {
+            <MudText Color="Color.Error">@MensagemAlerta</MudText>
+        }
+
+    </MudForm>
+</MudPaper>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private CategoriasRequestEdit categoria = new(0, "", "");
+    private string MensagemAlerta = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var categoriaResponse = await categoriaAPI.GetCategoriaPorIdAsync(id);
+            if (categoriaResponse != null)
+            {
+                categoria = new CategoriasRequestEdit(categoriaResponse.Id_Categoria, categoriaResponse.nome, categoriaResponse.tipo);
+            }
+            else
+            {
+                MensagemAlerta = "Categoria não encontrada!";
+            }
+        }
+        catch (Exception ex)
+        {
+            MensagemAlerta = $"Erro ao carregar a categoria: {ex.Message}";
+        }
+    }
+
+    private async Task Atualizar()
+    {
+        if (CamposVazios())
+        {
+            MensagemAlerta = "Preencha os campos obrigatórios!";
+            return;
+        }
+
+        try
+        {
+            Console.WriteLine("Iniciando atualização...");
+            var success = await categoriaAPI.UpdateCategoriaAsync(categoria);
+            if (success)
+            {
+                Console.WriteLine("Atualização bem-sucedida, navegando para /Categorias");
+                navigationManager.NavigateTo("/Categorias/");
+            }
+            else
+            {
+                MensagemAlerta = "Erro ao atualizar a categoria!";
+            }
+        }
+        catch (Exception ex)
+        {
+            MensagemAlerta = $"Erro ao atualizar a categoria: {ex.Message}";
+        }
+    }
+
+    private bool CamposVazios()
+    {
+        return string.IsNullOrEmpty(categoria.nome) || string.IsNullOrEmpty(categoria.tipo);
+    }
+}

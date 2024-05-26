@@ -5,6 +5,8 @@ using WalletWatch.API.Requests;
 using WalletWatch.Web.Response;
 using System;
 using System.Collections.Generic;
+using Microsoft.Identity.Client;
+using System.Reflection;
 
 namespace WalletWatch.Web.Services
 {
@@ -35,37 +37,6 @@ namespace WalletWatch.Web.Services
             }
         }
 
-        public async Task AddUsuarioAsync(UsuariosRequest usuario)
-        {
-            try
-            {
-                await _httpClient.PostAsJsonAsync("usuarios", usuario);
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Erro ao adicionar usuário: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro inesperado: {ex.Message}");
-            }
-        }
-
-        public async Task DeleteUsuarioAsync(int id)
-        {
-            try
-            {
-                await _httpClient.DeleteAsync($"usuarios/{id}");
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Erro ao deletar usuário: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro inesperado: {ex.Message}");
-            }
-        }
 
         public async Task<UsuarioResponse?> GetUsuarioPorNomeAsync(string nome)
         {
@@ -85,19 +56,65 @@ namespace WalletWatch.Web.Services
             }
         }
 
-        public async Task UpdateUsuarioAsync(UsuariosRequestEdit usuario)
+        public async Task<UsuarioResponse?> GetUsuarioPorIdAsync(int id)
+        {
+            return await _httpClient.GetFromJsonAsync<UsuarioResponse>($"usuarios/{id}");
+        }
+
+
+        public async Task AddUsuarioAsync(UsuariosRequest usuario)
         {
             try
             {
-                await _httpClient.PutAsJsonAsync("usuarios", usuario);
+                await _httpClient.PostAsJsonAsync("usuarios", usuario);
             }
             catch (HttpRequestException ex)
             {
-                Console.WriteLine($"Erro ao atualizar usuário: {ex.Message}");
+                Console.WriteLine($"Erro ao adicionar usuário: {ex.Message}");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro inesperado: {ex.Message}");
+            }
+        }
+
+        public async Task<bool> DeleteUsuarioAsync(int id)
+        {
+            try
+            {
+                await _httpClient.DeleteAsync($"usuarios/{id}");
+                return true;
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Erro ao deletar usuário: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro inesperado: {ex.Message}");
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateUsuarioAsync(UsuariosRequestEdit usuario)
+        {
+            try
+            {
+                var url = $"/Usuarios/{usuario.Id_Usuario}";
+                await _httpClient.PutAsJsonAsync(url, usuario);
+
+                return true; 
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Erro ao atualizar usuário: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro inesperado: {ex.Message}");
+                return false;
             }
         }
     }

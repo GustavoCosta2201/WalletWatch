@@ -6,30 +6,40 @@
 
     <MudText Class="mt-8" Typo="Typo.h4">Cadastro do Usuário</MudText>
 
+    @if (Sucesso)
+    {
+        <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Usuário cadastrado com sucesso!</MudAlert>
+    }
+
+    @if (!string.IsNullOrEmpty(MensagemAlerta) && CamposVazios())
+    {
+        <MudAlert Severity="Severity.Error" Variant="Variant.Filled">@MensagemAlerta!</MudAlert>
+    }
+
     <MudForm>
 
         <MudTextField Class="mt-4" T="string" Placeholder="Nome do Usuário"
-                      Variant="Variant.Outlined"
+                      InputType="InputType.Text"
                       @bind-Value="nome"
                       Required="true"
                       RequiredError="Campo obrigatório." />
 
-        <MudTextField Class="mt-4" T="string" Placeholder="Insira a senha"
-                      Variant="Variant.Outlined"
+
+         <MudTextField T="string"  Placeholder="Insira a senha" HelperText="Escolha uma senha segura"
+                      InputType="InputType.Password"
                       @bind-Value="senha"
-                      Lines="4"
                       Required="true"
-                      RequiredError="Campo obrigatório." />
+                      RequiredError="Campo obrigatório!" />
 
         <MudTextField Class="mt-4" T="string" Placeholder="Insira o E-mail"
-                      Variant="Variant.Outlined"
+                      InputType="InputType.Email"
                       @bind-Value="email"
-                      Lines="4"
                       Required="true"
                       RequiredError="Campo obrigatório." />
 
         <div class="d-flex align-center justify-space-between mt-4">
             <MudButton Variant="Variant.Filled"
+            StartIcon="@Icons.Material.Filled.Save" 
                        @onclick="Cadastrar"
                        Color="Color.Success"
                        Class="ml-auto">
@@ -48,12 +58,28 @@
     private string? nome;
     private string? senha;
     private string? email;
+    private bool Sucesso = false;
+    private string MensagemAlerta { get; set; } = "";
 
     private async Task Cadastrar()
     {
+
+        if (CamposVazios())
+        {
+            MensagemAlerta = "Preencha os campos obrigatórios!";
+            return;
+        }
+
         var usuario = new UsuariosRequest(nome!, senha!, email!);
+        Sucesso = true;
         await usuarioAPI.AddUsuarioAsync(usuario);
+        await Task.Delay(1500);
         navigationManager.NavigateTo("/Usuarios");
+    }
+
+    private bool CamposVazios()
+    {
+        return string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha);
     }
 
 }

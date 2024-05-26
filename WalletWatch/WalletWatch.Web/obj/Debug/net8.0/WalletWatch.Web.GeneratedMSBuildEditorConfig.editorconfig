@@ -26,12 +26,52 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Componentes/Popup.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50ZXNcUG9wdXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Layout/NavMenuExpand.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnVFeHBhbmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/CadastrarCategoria.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FkYXN0cmFyQ2F0ZWdvcmlhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/CadastrarTransacoes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FkYXN0cmFyVHJhbnNhY29lcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/CadastrarUsuarios.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FkYXN0cmFyVXN1YXJpb3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/Categorias.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmlhcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/EditarCategoria.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGFyQ2F0ZWdvcmlhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/EditarTransacao.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGFyVHJhbnNhY2FvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/EditarUsuario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGFyVXN1YXJpby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/MudGridRow.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVkR3JpZFJvdy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/Transacoes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY29lcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projetos/WalletWatch/WalletWatch/WalletWatch.Web/Pages/Usuarios.razor]

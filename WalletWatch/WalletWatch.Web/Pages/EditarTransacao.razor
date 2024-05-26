@@ -1,0 +1,171 @@
+﻿@page "/EditarTransacao/{id:int}"
+@inject NavigationManager navigationManager
+@inject TransacoesAPI transacoesAPI
+@inject UsuariosAPI usuariosAPI
+@inject CategoriaAPI CategoriasAPI
+
+<MudPaper Class="px-8 pt-6 pb-8 mx-12 my-8" Elevation="3" Square="true">
+    <MudText Class="mt-8" Typo="Typo.h4" Color="Color.Primary">Cadastro de Transações</MudText>
+
+    @if (!string.IsNullOrEmpty(MensagemAlerta))
+    {
+        <MudAlert Severity="Severity.Error" Variant="Variant.Filled">@MensagemAlerta</MudAlert>
+    }
+
+    @if (TransacaoSalvaComSucesso)
+    {
+        <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Transação salva com sucesso!</MudAlert>
+    }
+
+    <MudForm Class="mt-6">
+        <MudTextField Class="mt-4" T="string" Placeholder="Descrição da transação"
+                      InputType="InputType.Text"
+                      @bind-Value="transacoes.descricao"
+                      Required="true"
+                      RequiredError="Campo obrigatório."
+                      Icon="Icons.Outlined.Category" />
+
+
+
+
+
+        <MudTextField Class="mt-4" Label="Valor da transação" T="decimal" Placeholder="Valor da Transação"
+                      InputType="InputType.Text"
+                      @bind-Value="transacoes.Valor"
+                      Culture="ptbr"
+                      Required="true"
+                      RequiredError="Campo obrigatório."
+                      Icon="Icons.Outlined.Description">
+            <Converters>
+                <Converter T="decimal" U="string"
+                           Convert="(Func<decimal, string>)(value => value.ToString('F2', System.Globalization.CultureInfo.InvariantCulture))"
+                           ConvertBack="(Func<string, decimal>)(text => decimal.TryParse(text.Replace(',', '.'), System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out var result) ? result : 0)" />
+            </Converters>
+        </MudTextField>
+@* 
+        <MudTextField Class="mt-4" Label="Data da transação" Placeholder="Data da Transação"
+                      InputType="InputType.Date"
+                      Value="@transacoes.Data"
+                      DateFormat="dd.MM.yyyy"
+                      @oninput="@(e => transacoes.Data = DateOnly.Parse((string)e.Value))"
+                      Required="true"
+                      RequiredError="Campo obrigatório." /> *@
+
+
+
+
+@*         <MudDatePicker Label="Data da transação" Value="transacoes.Data" Required="true" DateFormat="yyyy-mm-dd" /> *@
+
+        <MudSelect T="int" Label="Categorias" @bind-Value="transacoes.Id_Categoria" Class="mt-4" Required="true" RequiredError="Campo obrigatório.">
+                @if (Categorias != null && Categorias.Any())
+                {
+                    @foreach (var categoria in Categorias)
+                    {
+                            <MudSelectItem Value="@categoria.Id_Categoria">@categoria.nome</MudSelectItem>
+                    }
+                }
+                else
+                {
+                    <MudSelectItem Value="0">Nenhuma categoria encontrada</MudSelectItem>
+                }
+        </MudSelect>
+
+        <MudSelect T="int" Label="Usuário" @bind-Value="transacoes.Id_Usuario" Class="mt-4" Required="true" RequiredError="Campo obrigatório.">
+                @if (usuarios != null && usuarios.Any())
+                {
+                    @foreach (var usuario in usuarios)
+                    {
+                            <MudSelectItem Value="@usuario.Id_usuario">@usuario.nome</MudSelectItem>
+                    }
+                }
+                else
+                {
+                    <MudSelectItem Value="0">Nenhum usuário encontrado</MudSelectItem>
+                }
+        </MudSelect>
+
+        <div class="d-flex justify-end mt-6">
+            <MudButton Variant="Variant.Filled"
+                       StartIcon="@Icons.Material.Filled.Save"
+                       @onclick="Atualizar"
+                       Color="Color.Success">
+                Atualizar
+            </MudButton>
+        </div>
+    </MudForm>
+</MudPaper>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private TransacoesRequestEdit transacoes = new TransacoesRequestEdit(0, 0, 0, "", 0, null);
+    private ICollection<UsuarioResponse>? usuarios;
+    private ICollection<CategoriaResponse>? Categorias;
+    private string MensagemAlerta { get; set; } = "";
+    private bool TransacaoSalvaComSucesso { get; set; } = false;
+    public CultureInfo ptbr = CultureInfo.GetCultureInfo("PT-BR");
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var transacaoResponse = await transacoesAPI.GetTransacaoPorIdAsync(id);
+        usuarios = await usuariosAPI.GetUsuarioAsync();
+        Categorias = await CategoriasAPI.GetCategoriaAsync();
+
+        if (transacaoResponse != null)
+        {
+
+            transacoes = new TransacoesRequestEdit(transacaoResponse.id_transacao, transacaoResponse.id_usuario, transacaoResponse.id_categoria,
+                transacaoResponse.descricao, transacaoResponse.valor, transacaoResponse.data);
+        }
+        else
+        {
+            MensagemAlerta = "Transação não encontrada!";
+        }
+    }
+
+    private void OnInput(ChangeEventArgs e)
+    {
+        var value = e.Value?.ToString()?.Replace(".", ",");
+        transacoes.Valor = string.IsNullOrEmpty(value) ? 0 : decimal.Parse(value, new System.Globalization.CultureInfo("pt-BR"));
+    }
+
+
+    public async Task Atualizar()
+    {
+        try
+        {
+            Console.WriteLine("Iniciando Atualizar");
+
+            if (CamposVazios())
+            {
+                MensagemAlerta = "Por favor, preencha todos os campos.";
+                Console.WriteLine("Campos vazios");
+                return;
+            }
+
+            var success = await transacoesAPI.UpdateTransacoesAsync(transacoes);
+
+            if (success)
+            {
+                navigationManager.NavigateTo("/Transacoes/");
+                Console.WriteLine("Transação atualizada com sucesso");
+            }
+            else
+            {
+                MensagemAlerta = "Erro ao atualizar a transação!";
+                Console.WriteLine("Erro ao atualizar a transação");
+            }
+        }
+        catch (Exception ex)
+        {
+            MensagemAlerta = $"Erro ao atualizar a transação: {ex.Message}";
+            Console.WriteLine($"Erro ao atualizar a transação: {ex.Message}");
+        }
+    }
+
+    private bool CamposVazios()
+    {
+        return string.IsNullOrEmpty(transacoes.descricao) || transacoes.Valor == 0 || transacoes.Data == null || transacoes.Id_Usuario == 0 || transacoes.Id_Categoria == 0;
+    }
+}

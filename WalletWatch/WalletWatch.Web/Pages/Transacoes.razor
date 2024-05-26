@@ -1,0 +1,172 @@
+﻿@page "/Transacoes"
+@inject TransacoesAPI transacoesAPI
+@inject UsuariosAPI usuariosAPI
+@inject CategoriaAPI CategoriasAPI
+@inject NavigationManager navigationManager
+@inject IDialogService DialogService
+
+<MudStack Class="mt-4 mb-4" Row="true" Justify="Justify.SpaceBetween">
+    <MudText Class="mb-4" Typo="Typo.h4">Transações Cadastradas</MudText>
+    <MudPagination Count="@totalPaginas" SelectedChanged="PaginaMudou"></MudPagination>
+</MudStack>
+
+@if (TransacoesPorPagina is not null)
+{
+    <MudTable Items="TransacoesPorPagina" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
+        <HeaderContent>
+            <MudTh>Código da Transação</MudTh>
+            <MudTh>Usuário</MudTh>
+            <MudTh>Categoria</MudTh>
+            <MudTh>Descrição</MudTh>
+            <MudTh>Valor</MudTh>
+@*             <MudTh>Data</MudTh> *@
+            <MudTh></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Código da Transação">@context.id_transacao</MudTd>
+            <MudTd DataLabel="Usuário">
+                @if (Usuario != null)
+                {
+                    var usuario = Usuario.FirstOrDefault(u => u.Id_usuario == context.id_usuario);
+                    if (usuario != null)
+                    {
+                        @usuario.nome
+                    }
+                }
+            </MudTd>
+            <MudTd DataLabel="Categoria">
+                @if (Categoria != null)
+                {
+                    var categoria = Categoria.FirstOrDefault(c => c.Id_Categoria == context.id_categoria);
+                    if (categoria != null)
+                    {
+                        @categoria.nome
+                    }
+                }
+            </MudTd>
+            <MudTd DataLabel="Descrição">@context.descricao</MudTd>
+            <MudTd DataLabel="Valor">R$: @context.valor</MudTd>
+         @*    <MudTd DataLabel="Data">@context.data.ToString("yyyy-MM-dd")</MudTd> *@
+            <MudTd>
+                <MudTooltip Text="Adicionar">
+                    <MudFab Color="Color.Success" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" @onclick="AdicionarTransacao" />
+                </MudTooltip>
+                <MudTooltip Text="Editar">
+                    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" @onclick="() => OnEditTransacao(context.id_transacao)" />
+                </MudTooltip>
+                <MudTooltip Text="Deletar">
+                    <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" @onclick="() => OnDeleteClick(context.id_transacao)" />
+                </MudTooltip>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+
+@code {
+    private ICollection<TransacoesResponse>? transacoes;
+    private ICollection<UsuarioResponse>? Usuario;
+    private ICollection<CategoriaResponse>? Categoria;
+    private int tamanho = 8;
+    private int TotalItens;
+    private int totalPaginas;
+    private ICollection<TransacoesResponse>? TransacoesPorPagina;
+    private int paginaAtual = 1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        transacoes = await transacoesAPI.GetTransacoesAsync();
+        Usuario = await usuariosAPI.GetUsuarioAsync();
+        Categoria = await CategoriasAPI.GetCategoriaAsync();
+
+        if (transacoes != null)
+        {
+            transacoes = transacoes.OrderByDescending(u => u.id_transacao).ToList();
+            TotalItens = transacoes.Count();
+            totalPaginas = (int)Math.Ceiling((TotalItens * 1.0) / tamanho);
+            PaginaMudou(1);
+        }
+    }
+
+    private void PaginaMudou(int pageNumber)
+    {
+
+        paginaAtual = pageNumber;
+        var indice = (paginaAtual - 1) * tamanho;
+        TransacoesPorPagina = transacoes!
+            .Skip(indice)
+            .Take(tamanho)
+            .ToList();
+    }
+
+    public void AdicionarTransacao()
+    {
+        navigationManager.NavigateTo("/CadastrarTransacoes");
+    }
+
+    private async Task OnEditTransacao(int id)
+    {
+        var parameters = new DialogParameters
+    {
+        { nameof(Popup.ContentText), "Deseja editar essa transação?" },
+        { nameof(Popup.ButtonText), "Editar" },
+        { nameof(Popup.Color), Color.Warning }
+    };
+
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = DialogService.Show<Popup>("Confirmar Edição", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled)
+        {
+            navigationManager.NavigateTo($"/EditarTransacao/{id}");
+        }
+    }
+
+
+
+    private async Task OnDeleteClick(int id)
+    {
+        await DeletarTransacao(id);
+    }
+
+    private async Task DeletarTransacao(int id)
+    {
+        var parameters = new DialogParameters
+        {
+          {nameof(Popup.ContentText), "Você realmente quer excluir essa transaçãos?"},
+          {nameof(Popup.ButtonText), "Deletar"},
+          {nameof(Popup.Color), Color.Error}
+
+        };
+
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = DialogService.Show<Popup>("Confirmar Deleção", parameters, options);
+        var result = await dialog.Result;
+
+
+        if (!result.Canceled)
+        {
+            var sucess = await transacoesAPI.DeleteTransacoesAsync(id);
+
+            if (sucess)
+            {
+                var remover = transacoes!.FirstOrDefault( t => t.id_transacao == id);
+
+                if (remover != null)
+                {
+                    transacoes!.Remove(remover);
+                    TotalItens = transacoes.Count();
+                    totalPaginas = (int)Math.Ceiling((TotalItens * 1.0) / tamanho);
+                    PaginaMudou(paginaAtual);
+                    StateHasChanged();
+                }
+            }
+        }
+    }
+
+    
+
+
+}

@@ -1,0 +1,111 @@
+﻿@page "/EditarUsuarios/{id:int}"
+@inject NavigationManager navigationManager
+@inject UsuariosAPI usuarioAPI
+
+<MudPaper Class="px-8 pt-2 pb-4 mx-12 my-8" Justify="Justify.Center">
+
+    <MudText Class="mt-8" Typo="Typo.h4">Cadastro do Usuário</MudText>
+
+    @if (!string.IsNullOrEmpty(MensagemAlerta) && CamposVazios())
+    {
+        <MudAlert Severity="Severity.Error" Variant="Variant.Filled">@MensagemAlerta!</MudAlert>
+    }
+
+    <MudForm>
+
+        <MudTextField Class="mt-4" T="string" Placeholder="Nome do Usuário"
+                      InputType="InputType.Text"
+                      @bind-Value="usuario.nome"
+                      Required="true"
+                      RequiredError="Campo obrigatório." />
+
+
+        <MudTextField T="string" Placeholder="Insira a senha" HelperText="Escolha uma senha segura"
+                      InputType="InputType.Password"
+                      @bind-Value="usuario.senha"
+                      Required="true"
+                      RequiredError="Campo obrigatório!" />
+
+        <MudTextField Class="mt-4" T="string" Placeholder="Insira o E-mail"
+                      InputType="InputType.Email"
+                      @bind-Value="usuario.email"
+                      Required="true"
+                      RequiredError="Campo obrigatório." />
+
+        <div class="d-flex align-center justify-space-between mt-4">
+            <MudButton Variant="Variant.Filled"
+                       StartIcon="@Icons.Material.Filled.Save"
+                       @onclick="Atualizar"
+                       Color="Color.Warning"
+                       Class="ml-auto">
+                Atualizar
+            </MudButton>
+        </div>
+
+    </MudForm>
+
+
+</MudPaper>
+
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private string MensagemAlerta { get; set; } = "";
+    private bool Sucesso = false;
+    private UsuariosRequestEdit usuario = new UsuariosRequestEdit(0, "", "", "");
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var usuarioResponse = await usuarioAPI.GetUsuarioPorIdAsync(id);
+
+        if(usuarioResponse != null){
+
+            usuario = new UsuariosRequestEdit(usuarioResponse.Id_usuario, usuarioResponse.nome, usuarioResponse.senha, usuarioResponse.email);
+        }
+        else
+        {
+            MensagemAlerta = "Usuário não encontrado!";
+        }
+    }
+
+    private async Task Atualizar()
+    {
+
+        if (CamposVazios())
+        {
+            MensagemAlerta = "Preencha os campos obrigatórios!";
+            return;
+        }
+
+        try
+        {
+            var sucess = await usuarioAPI.UpdateUsuarioAsync(usuario);
+
+            if (sucess)
+            {
+                navigationManager.NavigateTo("/Usuarios/");
+            }
+            else
+            {
+                MensagemAlerta = "Erro ao atualizar o usuário!";
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+
+            MensagemAlerta = $"Erro ao atualizar a categoria: {ex.Message}";
+        }
+
+       
+    }
+
+    private bool CamposVazios()
+    {
+        return string.IsNullOrEmpty(usuario.nome) || string.IsNullOrEmpty(usuario.email) || string.IsNullOrEmpty(usuario.senha);
+    }
+
+}

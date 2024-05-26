@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[8.0.2, )"
             },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
             "Microsoft.Extensions.Http": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -77,6 +81,10 @@
             "MudBlazor": {
               "target": "Package",
               "version": "[6.19.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
             }
           },
           "imports": [

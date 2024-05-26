@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "C:\\Projetos\\WalletWatch\\WalletWatch\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|c:\\projetos\\walletwatch\\walletwatch\\walletwatch.web\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|solutionrelative:walletwatch.web\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|c:\\projetos\\walletwatch\\walletwatch\\walletwatch.web\\pages\\cadastrartransacoes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|solutionrelative:walletwatch.web\\pages\\cadastrartransacoes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|c:\\projetos\\walletwatch\\walletwatch\\walletwatch.web\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|solutionrelative:walletwatch.web\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|c:\\projetos\\walletwatch\\walletwatch\\walletwatch.web\\pages\\transacoes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|solutionrelative:walletwatch.web\\pages\\transacoes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|c:\\projetos\\walletwatch\\walletwatch\\walletwatch.web\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|solutionrelative:walletwatch.web\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|c:\\projetos\\walletwatch\\walletwatch\\walletwatch.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|solutionrelative:walletwatch.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2955822C-8FB9-4B61-9ED8-F33BA95348BA}|WalletWatch.API\\WalletWatch.API.csproj|c:\\projetos\\walletwatch\\walletwatch\\walletwatch.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2955822C-8FB9-4B61-9ED8-F33BA95348BA}|WalletWatch.API\\WalletWatch.API.csproj|solutionrelative:walletwatch.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|c:\\projetos\\walletwatch\\walletwatch\\walletwatch.web\\pages\\cadastrarusuarios.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|solutionrelative:walletwatch.web\\pages\\cadastrarusuarios.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|c:\\projetos\\walletwatch\\walletwatch\\walletwatch.web\\pages\\editartransacao.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B3E2E708-245C-4FF6-9BE3-38E635CD82EF}|WalletWatch.Web\\WalletWatch.Web.csproj|solutionrelative:walletwatch.web\\pages\\editartransacao.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,75 +31,41 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "WalletWatch.Web\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "WalletWatch.Web\\Layout\\NavMenu.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAASAAAA",
+              "Title": "CadastrarTransacoes.razor",
+              "DocumentMoniker": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Pages\\CadastrarTransacoes.razor",
+              "RelativeDocumentMoniker": "WalletWatch.Web\\Pages\\CadastrarTransacoes.razor",
+              "ToolTip": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Pages\\CadastrarTransacoes.razor",
+              "RelativeToolTip": "WalletWatch.Web\\Pages\\CadastrarTransacoes.razor",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAB8AAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-21T18:53:07.665Z",
+              "WhenOpened": "2024-05-26T15:14:35.109Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Home.razor",
-              "DocumentMoniker": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Pages\\Home.razor",
-              "RelativeDocumentMoniker": "WalletWatch.Web\\Pages\\Home.razor",
-              "ToolTip": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Pages\\Home.razor",
-              "RelativeToolTip": "WalletWatch.Web\\Pages\\Home.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Title": "EditarTransacao.razor",
+              "DocumentMoniker": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Pages\\EditarTransacao.razor",
+              "RelativeDocumentMoniker": "WalletWatch.Web\\Pages\\EditarTransacao.razor",
+              "ToolTip": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Pages\\EditarTransacao.razor",
+              "RelativeToolTip": "WalletWatch.Web\\Pages\\EditarTransacao.razor",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAADgAAAB5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-21T18:47:13.829Z"
+              "WhenOpened": "2024-05-26T14:50:36.547Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\wwwroot\\index.html",
-              "RelativeDocumentMoniker": "WalletWatch.Web\\wwwroot\\index.html",
-              "ToolTip": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\wwwroot\\index.html",
-              "RelativeToolTip": "WalletWatch.Web\\wwwroot\\index.html",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-21T18:47:05.396Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.API\\Program.cs",
-              "RelativeDocumentMoniker": "WalletWatch.API\\Program.cs",
-              "ToolTip": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.API\\Program.cs",
-              "RelativeToolTip": "WalletWatch.API\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T18:46:03.794Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Program.cs",
-              "RelativeDocumentMoniker": "WalletWatch.Web\\Program.cs",
-              "ToolTip": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Program.cs",
-              "RelativeToolTip": "WalletWatch.Web\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T18:45:58.76Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CadastrarUsuarios.razor",
-              "DocumentMoniker": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Pages\\CadastrarUsuarios.razor",
-              "RelativeDocumentMoniker": "WalletWatch.Web\\Pages\\CadastrarUsuarios.razor",
-              "ToolTip": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Pages\\CadastrarUsuarios.razor",
-              "RelativeToolTip": "WalletWatch.Web\\Pages\\CadastrarUsuarios.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAlAAAA",
+              "Title": "Transacoes.razor",
+              "DocumentMoniker": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Pages\\Transacoes.razor",
+              "RelativeDocumentMoniker": "WalletWatch.Web\\Pages\\Transacoes.razor",
+              "ToolTip": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\Pages\\Transacoes.razor",
+              "RelativeToolTip": "WalletWatch.Web\\Pages\\Transacoes.razor",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAADAAAABWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-21T18:39:38.215Z"
+              "WhenOpened": "2024-05-26T14:48:08.099Z",
+              "EditorCaption": ""
             }
           ]
         },
