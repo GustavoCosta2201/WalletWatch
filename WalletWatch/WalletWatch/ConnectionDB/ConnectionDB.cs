@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WalletWatch.Modelos;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace WalletWatch.Banco;
 
-public class ConnectionDB : DbContext
+public class ConnectionDB : IdentityDbContext<PessoaComAcesso, PerfilDeAcesso, int>
 {
 
     public DbSet<Usuarios> Usuarios { get; set; }
@@ -21,13 +22,13 @@ public class ConnectionDB : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        // optionsBuilder.LogTo(Console.WriteLine);
+
         optionsBuilder.UseSqlServer(ConnectionString).UseLazyLoadingProxies();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
-
+        base.OnModelCreating(modelBuilder);
     }
 }

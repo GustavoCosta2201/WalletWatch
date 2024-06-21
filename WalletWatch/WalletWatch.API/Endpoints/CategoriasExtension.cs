@@ -11,9 +11,9 @@ namespace WalletWatch.API.Endpoints
     {
         public static void AddEndpointsCategorias(this WebApplication app)
         {
+            var GroupBuilder = app.MapGroup("Categorias").RequireAuthorization().WithTags("Categorias");
 
-
-            app.MapGet("/Categorias/", ([FromServices] DAL<Categorias> DAL) =>
+            GroupBuilder.MapGet("", ([FromServices] DAL<Categorias> DAL) =>
             {
                 var lista = DAL.Listar();
                 return Results.Ok(lista);
@@ -21,15 +21,14 @@ namespace WalletWatch.API.Endpoints
 
 
 
-            app.MapGet("/Categorias/{nome}", ([FromServices] DAL<Categorias> DAL, string nome) =>
+            GroupBuilder.MapGet("/{nome}", ([FromServices] DAL<Categorias> DAL, string nome) =>
             {
                 var recuperar = DAL.RecuperarPor(c => c.Nome!.Equals(nome));
                 return recuperar != null ? Results.Ok(recuperar) : Results.NotFound();
             });
 
 
-
-            app.MapGet("/Categorias/{id:int}", ([FromServices] DAL<Categorias> DAL, int id) =>
+            GroupBuilder.MapGet("/{id:int}", ([FromServices] DAL<Categorias> DAL, int id) =>
             {
                 var idRecuperado = DAL.RecuperarPor(i => i.Id_Categoria == id);
                 return idRecuperado != null ? Results.Ok(idRecuperado) : Results.NotFound();
@@ -37,7 +36,7 @@ namespace WalletWatch.API.Endpoints
 
 
 
-            app.MapPost("/Categorias/", ([FromServices] DAL<Categorias> DAL, CategoriasRequest request) =>
+            GroupBuilder.MapPost("", ([FromServices] DAL<Categorias> DAL, CategoriasRequest request) =>
             {
                 var categorias = new Categorias(request.nome, request.tipo);
                 DAL.Adicionar(categorias);
@@ -45,8 +44,7 @@ namespace WalletWatch.API.Endpoints
             });
 
 
-
-            app.MapDelete("/Categorias/{id:int}", ([FromServices] DAL<Categorias> DAL, int id) =>
+            GroupBuilder.MapDelete("/{id:int}", ([FromServices] DAL<Categorias> DAL, int id) =>
             {
                 var recuperarID = DAL.RecuperarPor(i => i.Id_Categoria == id);
                 if (recuperarID != null)
@@ -59,10 +57,9 @@ namespace WalletWatch.API.Endpoints
                     return Results.NotFound();
                 }
             });
+ 
 
-
-
-            app.MapPut("/Categorias/{id}", ([FromServices] DAL<Categorias> DAL, int id, [FromBody] CategoriasRequestEdit requestEdit) =>
+            GroupBuilder.MapPut("/{id}", ([FromServices] DAL<Categorias> DAL, int id, [FromBody] CategoriasRequestEdit requestEdit) =>
             {
                 var Recuperar = DAL.RecuperarPor(a => a.Id_Categoria == id);
 
@@ -79,6 +76,40 @@ namespace WalletWatch.API.Endpoints
                     return Results.NotFound();
                 }
             });
+
+
+            GroupBuilder.MapGet("/ExportCategorias", ([FromServices] DAL<Categorias> DAL) =>
+            {
+                var categorias = DAL.Listar();
+
+                string path = "C:\\WalletWatch-Files\\";
+                string FullPath = path + "ListaCategorias.csv";
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                using (FileStream fs = File.Create(FullPath))
+                {
+                    fs.Close();
+                }
+
+                if (File.Exists(FullPath))
+                {
+                    using (StreamWriter sw = new StreamWriter(FullPath))
+                    {
+                        sw.WriteLine("Código da Categoria\t  Descrição\t   Tipo\t");
+                        foreach (var cataegoria in categorias)
+                        {
+                            sw.WriteLine($"{cataegoria.Id_Categoria}\t,{cataegoria.Nome}\t,{cataegoria.Tipo}\t");
+
+                        }
+                    }
+
+                }
+            });
+
 
         }
 

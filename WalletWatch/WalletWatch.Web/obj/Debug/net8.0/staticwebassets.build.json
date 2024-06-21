@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mVT72hxUC5ZJV7pwj+HroRqdx04/NOWkiSgHvAlMu28=",
+  "Hash": "te2wn4sQC+0KT2hbDkTN1gqLS7OelWGURhS5ezrhUDM=",
   "Source": "WalletWatch.Web",
   "BasePath": "/",
   "Mode": "Root",
@@ -397,6 +397,25 @@
       "OriginalItemSpec": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\obj\\Debug\\net8.0\\webcil\\Microsoft.AspNetCore.Authorization.wasm"
     },
     {
+      "Identity": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.wasm",
+      "SourceId": "WalletWatch.Web",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.wasm",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\obj\\Debug\\net8.0\\webcil\\Microsoft.AspNetCore.Components.Authorization.wasm"
+    },
+    {
       "Identity": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.wasm",
       "SourceId": "WalletWatch.Web",
       "SourceType": "Computed",
@@ -452,6 +471,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\obj\\Debug\\net8.0\\webcil\\Microsoft.AspNetCore.Components.Web.wasm"
+    },
+    {
+      "Identity": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.wasm",
+      "SourceId": "WalletWatch.Web",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.wasm",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\obj\\Debug\\net8.0\\webcil\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.wasm"
     },
     {
       "Identity": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.wasm",
@@ -8358,6 +8396,25 @@
       "OriginalItemSpec": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Private.Xml.Linq.wasm"
     },
     {
+      "Identity": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\obj\\Debug\\net8.0\\compressed\\uem83ms01h.gz",
+      "SourceId": "WalletWatch.Web",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.wasm"
+    },
+    {
       "Identity": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\obj\\Debug\\net8.0\\compressed\\ukek45tem8.gz",
       "SourceId": "WalletWatch.Web",
       "SourceType": "Computed",
@@ -8947,6 +9004,25 @@
       "OriginalItemSpec": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Diagnostics.StackTrace.wasm"
     },
     {
+      "Identity": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\obj\\Debug\\net8.0\\compressed\\yc4opw4id9.gz",
+      "SourceId": "WalletWatch.Web",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.wasm"
+    },
+    {
       "Identity": "C:\\Projetos\\WalletWatch\\WalletWatch\\WalletWatch.Web\\obj\\Debug\\net8.0\\compressed\\ynj2x9bgy8.gz",
       "SourceId": "WalletWatch.Web",
       "SourceType": "Computed",
@@ -9363,6 +9439,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\sample-data\\weather.json"
+    },
+    {
+      "Identity": "C:\\Users\\Gusta\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\8.0.6\\staticwebassets\\AuthenticationService.js",
+      "SourceId": "Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\Gusta\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\8.0.6\\staticwebassets\\",
+      "BasePath": "_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "RelativePath": "AuthenticationService.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Gusta\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\8.0.6\\staticwebassets\\AuthenticationService.js"
     },
     {
       "Identity": "C:\\Users\\Gusta\\.nuget\\packages\\mudblazor\\6.19.1\\staticwebassets\\MudBlazor.min.css",

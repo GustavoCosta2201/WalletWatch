@@ -26,6 +26,12 @@ namespace WalletWatch.Web.Services
             return await httpClient.GetFromJsonAsync<CategoriaResponse>($"/Categorias/{id}");
         }
 
+        public async Task<bool> GetExport()
+        {
+            await httpClient.GetAsync("ExportCategorias");
+            return true;
+        }
+
         public async Task<CategoriaResponse?> GetCategoriaPorNome(string nome)
         {
             return await httpClient.GetFromJsonAsync<CategoriaResponse?>($"/Categorias/{nome}");

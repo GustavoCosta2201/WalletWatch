@@ -1,12 +1,29 @@
 ﻿@page "/Usuarios"
+@using System.Net.Http
+@using System.Text
+@using MudBlazor
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
 @inject UsuariosAPI usuarioAPI
 @inject NavigationManager navigationManager
 @inject IDialogService DialogService
+@inject HttpClient HttpClient
 
 <MudStack Class="mt-4 mb-4" Row="true" Justify="Justify.SpaceBetween">
     <MudText Class="mb-4" Typo="Typo.h4">Usuários cadastrados</MudText>
     <MudPagination Count="totalPaginas" SelectedChanged="PaginaSelecionada"></MudPagination>
 </MudStack>
+
+
+@if (sucesso)
+{
+    <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Lista de Usuários exportados com sucesso em: C:/WalletWatch-files</MudAlert>
+}
+
+@if (!string.IsNullOrEmpty(MensagemAlerta))
+{
+    <MudAlert Severity="Severity.Error" Variant="Variant.Filled">@MensagemAlerta!</MudAlert>
+}
 
 @if (usuariosPorPagina is not null)
 {
@@ -28,10 +45,13 @@
                     <MudFab Color="Color.Success" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" @onclick="AdicionarUsuario" />
                 </MudTooltip>
                 <MudTooltip Text="Editar">
-                    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" @onclick="() => OnEditUsuario(context.Id_usuario) " />
+                    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" @onclick="() => OnEditUsuario(context.Id_usuario)" />
                 </MudTooltip>
                 <MudTooltip Text="Deletar">
                     <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" @onclick="@(() => OnDeleteUsuarioClicked(context.Id_usuario))" />
+                </MudTooltip>
+                <MudTooltip Text="Exportar csv">
+                    <MudFab Color="Color.Surface" StartIcon="@Icons.Material.Filled.CloudUpload" Size="Size.Small" @onclick="ExportarCsv" />
                 </MudTooltip>
             </MudTd>
         </RowTemplate>
@@ -45,8 +65,8 @@
     private int totalPaginas;
     private ICollection<UsuarioResponse>? usuariosPorPagina;
     private int paginaAtual = 1;
-
-
+    private string MensagemAlerta = string.Empty;
+    private bool sucesso = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -61,42 +81,31 @@
         }
     }
 
-
-
     private void PaginaMudou(int pageNumber)
     {
         paginaAtual = pageNumber;
         var indice = (paginaAtual - 1) * tamanho;
-        usuariosPorPagina = usuarios!
-            .Skip(indice)
-            .Take(tamanho)
-            .ToList();
+        usuariosPorPagina = usuarios!.Skip(indice).Take(tamanho).ToList();
     }
-
-
 
     private void PaginaSelecionada(int pagina)
     {
         PaginaMudou(pagina);
     }
 
-
-
     public void AdicionarUsuario()
     {
         navigationManager.NavigateTo("/CadastrarUsuarios");
     }
 
-
-
     private async Task OnEditUsuario(int id)
     {
         var parameters = new DialogParameters
-    {
-        { nameof(Popup.ContentText), "Deseja editar esse usuário?" },
-        { nameof(Popup.ButtonText), "Editar" },
-        { nameof(Popup.Color), Color.Warning }
-    };
+        {
+            { nameof(Popup.ContentText), "Deseja editar esse usuário?" },
+            { nameof(Popup.ButtonText), "Editar" },
+            { nameof(Popup.Color), Color.Warning }
+        };
 
         var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
 
@@ -109,23 +118,19 @@
         }
     }
 
-
-
     private async Task OnDeleteUsuarioClicked(int id)
     {
         await DeletarUsuario(id);
     }
 
-
-
     private async Task DeletarUsuario(int id)
     {
         var parameters = new DialogParameters
-    {
-        { nameof(Popup.ContentText), "Você realmente quer excluir esse usuário?" },
-        { nameof(Popup.ButtonText), "Deletar" },
-        { nameof(Popup.Color), Color.Error }
-    };
+        {
+            { nameof(Popup.ContentText), "Você realmente quer excluir esse usuário?" },
+            { nameof(Popup.ButtonText), "Deletar" },
+            { nameof(Popup.Color), Color.Error }
+        };
 
         var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
 
@@ -145,10 +150,41 @@
                     TotalItens = usuarios.Count();
                     totalPaginas = (int)Math.Ceiling((TotalItens * 1.0) / tamanho);
                     PaginaMudou(paginaAtual);
-                    StateHasChanged(); 
+                    StateHasChanged();
                 }
             }
         }
     }
 
+    private async void ExportarCsv()
+    {
+
+        var parameters = new DialogParameters
+    {
+        { nameof(Popup.ContentText), "Deseja exportar para Excel?" },
+        { nameof(Popup.ButtonText), "Exportar" },
+        { nameof(Popup.Color), Color.Info }
+    };
+
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = DialogService.Show<Popup>("Confirmar Exportação", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled)
+        {
+
+            var sucess = await usuarioAPI.GetExport();
+
+            if (sucess)
+            {
+                sucesso = true;
+            }
+            StateHasChanged();
+
+        }
+    }
+
+
 }
+

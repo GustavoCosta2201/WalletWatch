@@ -37,6 +37,12 @@ namespace WalletWatch.Web.Services
             }
         }
 
+        public async Task<bool> GetExport()
+        {
+            await _httpClient.GetAsync("Export");
+            return true;
+        }
+
 
         public async Task<UsuarioResponse?> GetUsuarioPorNomeAsync(string nome)
         {

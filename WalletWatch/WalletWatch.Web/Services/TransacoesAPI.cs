@@ -49,6 +49,12 @@ namespace WalletWatch.Web.Services
             return true;
         }
 
+        public async Task<bool> GetExport()
+        {
+            await httpClient.GetAsync("/ExportTransacoes");
+            return true;
+        }
+
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿@page "/Transacoes"
+@using System.Net
 @inject TransacoesAPI transacoesAPI
 @inject UsuariosAPI usuariosAPI
 @inject CategoriaAPI CategoriasAPI
@@ -10,6 +11,17 @@
     <MudPagination Count="@totalPaginas" SelectedChanged="PaginaMudou"></MudPagination>
 </MudStack>
 
+
+@if (!string.IsNullOrEmpty(MensagemAlerta))
+{
+    <MudAlert Severity="Severity.Error" Variant="Variant.Filled">@MensagemAlerta</MudAlert>
+}
+
+@if (Exportacao)
+{
+    <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Lista de Usuários exportados com sucesso em: C:/WalletWatch-files!</MudAlert>
+}
+
 @if (TransacoesPorPagina is not null)
 {
     <MudTable Items="TransacoesPorPagina" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
@@ -19,7 +31,7 @@
             <MudTh>Categoria</MudTh>
             <MudTh>Descrição</MudTh>
             <MudTh>Valor</MudTh>
-@*             <MudTh>Data</MudTh> *@
+            @*             <MudTh>Data</MudTh> *@
             <MudTh></MudTh>
         </HeaderContent>
         <RowTemplate>
@@ -46,7 +58,7 @@
             </MudTd>
             <MudTd DataLabel="Descrição">@context.descricao</MudTd>
             <MudTd DataLabel="Valor">R$: @context.valor</MudTd>
-         @*    <MudTd DataLabel="Data">@context.data.ToString("yyyy-MM-dd")</MudTd> *@
+            @*    <MudTd DataLabel="Data">@context.data.ToString("yyyy-MM-dd")</MudTd> *@
             <MudTd>
                 <MudTooltip Text="Adicionar">
                     <MudFab Color="Color.Success" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" @onclick="AdicionarTransacao" />
@@ -56,6 +68,11 @@
                 </MudTooltip>
                 <MudTooltip Text="Deletar">
                     <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" @onclick="() => OnDeleteClick(context.id_transacao)" />
+                </MudTooltip>
+
+
+                <MudTooltip Text="Exportar csv">
+                    <MudFab Color="Color.Surface" StartIcon="@Icons.Material.Filled.CloudUpload" Size="Size.Small" @onclick="ExportarCsv" />
                 </MudTooltip>
             </MudTd>
         </RowTemplate>
@@ -71,6 +88,8 @@
     private int totalPaginas;
     private ICollection<TransacoesResponse>? TransacoesPorPagina;
     private int paginaAtual = 1;
+    private string MensagemAlerta { get; set; } = "";
+    private bool Exportacao = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -152,7 +171,7 @@
 
             if (sucess)
             {
-                var remover = transacoes!.FirstOrDefault( t => t.id_transacao == id);
+                var remover = transacoes!.FirstOrDefault(t => t.id_transacao == id);
 
                 if (remover != null)
                 {
@@ -166,7 +185,36 @@
         }
     }
 
-    
+
+    private async void ExportarCsv()
+    {
+        var parameters = new DialogParameters
+        {
+          {nameof(Popup.ContentText), "Deseja exportar para Excel?"},
+          {nameof(Popup.ButtonText), "Exportar"},
+          {nameof(Popup.Color), Color.Info}
+
+        };
+
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = DialogService.Show<Popup>("Confirmar Exportação", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled)
+        {
+            var sucess = await transacoesAPI.GetExport();
+
+            if (sucess)
+            {
+                Exportacao = true;
+            }
+        }
+        StateHasChanged();
+    }
+
+
+
 
 
 }

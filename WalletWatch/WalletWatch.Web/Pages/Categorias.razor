@@ -9,6 +9,16 @@
     <MudPagination Count="@totalPaginas" SelectedChanged="PaginaMudou"></MudPagination>
 </MudStack>
 
+@if (sucesso)
+{
+<MudAlert Severity="Severity.Success" Variant="Variant.Filled">Lista de Categorias exportados com sucesso em: C:/WalletWatch-files</MudAlert>
+}
+
+@if (!string.IsNullOrEmpty(MensagemAlerta))
+{
+    <MudAlert Severity="Severity.Error" Variant="Variant.Filled">@MensagemAlerta!</MudAlert>
+}
+
 @if (CategoriaPorPagina is not null)
 {
     <MudTable Items="CategoriaPorPagina" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
@@ -26,6 +36,7 @@
                 <MudTooltip Text="Adicionar">  <MudFab Color="Color.Success" StartIcon="@Icons.Material.Filled.Add" @onclick="AdicionarCategoria" Size="Size.Small" /> </MudTooltip>
                 <MudTooltip Text="Editar">  <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" @onclick="() => OnEditCategoria(context.Id_Categoria) " /></MudTooltip>
                 <MudTooltip Text="Deletar">  <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" @onclick="() => OnDeleteCategoriaClicked(context.Id_Categoria)"> </MudFab></MudTooltip>
+                
             </MudTd>
         </RowTemplate>
     </MudTable>
@@ -39,6 +50,7 @@
     private ICollection<CategoriaResponse>? CategoriaPorPagina;
     private int paginaAtual = 1; 
     private string MensagemAlerta = string.Empty;
+    private bool sucesso = false;
 
 
 
@@ -145,13 +157,38 @@
             }
             catch (Exception ex) when (ex is SqlException sqlEx && sqlEx.Number == 547)
             {
-                // Captura de exceção específica de violação de restrição de chave estrangeira
                 MensagemAlerta = "Não é possível excluir esta categoria porque existem transações relacionadas a ela.";
             }
-         
+
 
         }
 
 
+    }
+    private async Task ExportarCsv()
+    {
+        var parameters = new DialogParameters
+    {
+        { nameof(Popup.ContentText), "Deseja exportar para Excel?" },
+        { nameof(Popup.ButtonText), "Exportar" },
+        { nameof(Popup.Color), Color.Info }
+    };
+
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = DialogService.Show<Popup>("Confirmar Exportação", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled)
+        {
+
+            var sucess = await categoriaAPI.GetExport();
+
+            if (sucess)
+            {
+                sucesso = true;
+            }
+            StateHasChanged();
+        }
     }
 }

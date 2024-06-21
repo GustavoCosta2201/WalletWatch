@@ -1,4 +1,5 @@
 ﻿@page "/"
+@attribute [AllowAnonymous]
 
 <div>
     <MudChart ChartType="ChartType.StackedBar" ChartSeries="@Series" @bind-SelectedIndex="Index" LegendPosition="@LegendPosition" XAxisLabels="@XAxisLabels" Width="100%" Height="350px" Position.Top></MudChart>

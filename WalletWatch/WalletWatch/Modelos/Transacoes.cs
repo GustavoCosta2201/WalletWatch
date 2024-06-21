@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Common;
@@ -23,7 +24,9 @@ namespace WalletWatch.Modelos
         [Key]
         public int Id_Transacao { get; set; }
         public int Id_Usuario { get; set; }
+/*        public virtual Usuarios Usuario { get; set; }*/
         public int Id_Categoria { get; set; }
+  /*      public virtual Categorias Categoria { get; set; }*/
         public string? Descricao { get; set; } = "Descrição Padrão";
         public decimal Valor { get; set; }
         public DateTime Data_Transacao { get; set; } = DateTime.Now;

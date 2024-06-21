@@ -1,5 +1,6 @@
 ﻿using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 using WalletWatch.API.Requests;
 using WalletWatch.Banco;
 using WalletWatch.Modelos;
@@ -11,16 +12,16 @@ namespace WalletWatch.API.Endpoints
 
         public static void AddEndpointsUsuarios(this WebApplication app)
         {
+            var GroupBuilder = app.MapGroup("Usuarios").RequireAuthorization().WithTags("Usuarios");
 
-
-            app.MapGet("/Usuarios", ([FromServices] DAL<Usuarios> dal) =>
+            GroupBuilder.MapGet("", ([FromServices] DAL<Usuarios> dal) =>
             {
                 return Results.Ok(dal.Listar());
             });
 
 
 
-            app.MapGet("/Usuarios/{nome}", ([FromServices] DAL<Usuarios> DAL, string nome) =>
+            GroupBuilder.MapGet("/{nome}", ([FromServices] DAL<Usuarios> DAL, string nome) =>
             {
                 var recuperar = DAL.RecuperarPor(a => a.Nome!.Equals(nome));
 
@@ -35,11 +36,11 @@ namespace WalletWatch.API.Endpoints
             });
 
 
-            app.MapGet("/Usuarios/{id:int}", ([FromServices] DAL<Usuarios> DAL, int id) =>
+            GroupBuilder.MapGet("/{id:int}", ([FromServices] DAL<Usuarios> DAL, int id) =>
             {
                 var recuperarid = DAL.RecuperarPor(i => i.Id_Usuario == id);
 
-                if(recuperarid != null)
+                if (recuperarid != null)
                 {
                     return Results.Ok(recuperarid);
                 }
@@ -51,7 +52,7 @@ namespace WalletWatch.API.Endpoints
 
 
 
-            app.MapPost("/Usuarios/", ([FromServices] DAL<Usuarios> DAL, UsuariosRequest request) =>
+            GroupBuilder.MapPost("", ([FromServices] DAL<Usuarios> DAL, UsuariosRequest request) =>
             {
                 var usuarios = new Usuarios(request.nome, request.senha, request.email);
 
@@ -62,7 +63,8 @@ namespace WalletWatch.API.Endpoints
 
 
 
-            app.MapDelete("/Usuarios/{id}", ([FromServices] DAL<Usuarios> DAL, int id) => {
+            GroupBuilder.MapDelete("/{id}", ([FromServices] DAL<Usuarios> DAL, int id) =>
+            {
 
                 var recuperarID = DAL.RecuperarPor(i => i.Id_Usuario.Equals(id));
 
@@ -80,9 +82,9 @@ namespace WalletWatch.API.Endpoints
 
 
 
-            app.MapPut("/Usuarios/{id}", ([FromServices] DAL<Usuarios> DAL, int id, [FromBody] UsuariosRequestEdit requestEdit) =>
+            GroupBuilder.MapPut("/{id}", ([FromServices] DAL<Usuarios> DAL, int id, [FromBody] UsuariosRequestEdit requestEdit) =>
             {
-            var UsuarioAtualizar = DAL.RecuperarPor(u => u.Id_Usuario == id);
+                var UsuarioAtualizar = DAL.RecuperarPor(u => u.Id_Usuario == id);
 
                 if (UsuarioAtualizar is null)
                 {
@@ -96,6 +98,38 @@ namespace WalletWatch.API.Endpoints
 
                     DAL.Atualizar(UsuarioAtualizar);
                     return Results.Ok(UsuarioAtualizar);
+                }
+            });
+
+
+            GroupBuilder.MapGet("/Export", ([FromServices] DAL<Usuarios> dal) =>
+            {
+                var usuarios = dal.Listar();
+
+                string path = "C:\\WalletWatch-Files\\";
+                string FullPath = path + "ListaUsuarios.csv";
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                using (FileStream fs = File.Create(FullPath))
+                {
+                    fs.Close();
+                }
+
+                if (File.Exists(FullPath))
+                {
+                    using (StreamWriter sw = new StreamWriter(FullPath))
+                    {
+                        foreach (var usuario in usuarios)
+                        {
+                            sw.WriteLine($"{usuario.Id_Usuario},{usuario.Nome},{usuario.Email}");
+
+                        }
+                    }
+
                 }
             });
 

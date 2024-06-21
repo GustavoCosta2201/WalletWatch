@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "WalletWatch.Web",
   "resources": {
-    "hash": "sha256-BcX1tE1rA4ofgzb41eu6xGCKtrS+7IN05BGMj0GhUyc=",
+    "hash": "sha256-aRByfD8XVzhcl9CxKchKa1pY+0+GNUf+oeIQHwtQ+jg=",
     "jsModuleNative": {
       "dotnet.native.8.0.2.w1xso8eus4.js": "sha256-gPMK16QWoJSTxorlZJqcVtbBRTniIQWlLsJN2O4cJHg="
     },
@@ -21,9 +21,11 @@
       "Azure.Identity.wasm": "sha256-Z4d2gC7rBBgpCvtxUFKuedytnRnWY92gC2dLlsuh+xQ=",
       "Microsoft.AspNetCore.Authorization.wasm": "sha256-OLGFBcpljsXLhIaQF0m6arMwqtgxgm6RbZTaO8tfkRU=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-+8HtAi0ng5YbjkbeE5qEZU5ga1uH7+yDBrpxerkI1G4=",
+      "Microsoft.AspNetCore.Components.Authorization.wasm": "sha256-Lr2IezaCLA/YDm2A2hTENgy5KQeDz/o+mtiTHzn5dpo=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-CMRkrzCDzgX1XUEE5PWWJ6Q9JsVt/StuycyytVANvQ8=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-supFGv3TIB/pt7VOZOt4lPKVw0aeRxy3rAjLsoVD1EA=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-xiTZO998vbw5J8+g35bYDWWP7EvrRjIF8D2u5ttIRAc=",
+      "Microsoft.AspNetCore.Components.WebAssembly.Authentication.wasm": "sha256-PazZTNGqPhU8zKDdERbxyww2bQqnazf3CvOaH91kg8U=",
       "Microsoft.AspNetCore.Metadata.wasm": "sha256-ER1MvJnIfLgS6ubu/bFj+7nhJYiWj8wDxE6Or8egWWc=",
       "Microsoft.Bcl.AsyncInterfaces.wasm": "sha256-uV6JPE8pFJZ3vgxDKUeimvMSk+wGuYyOKWg5xKqP7Qo=",
       "Microsoft.Data.SqlClient.wasm": "sha256-uE3N7wq2L2lXwYeMylVoUqOyuxV0TK965IoUVblEZf8=",
@@ -235,10 +237,10 @@
       "mscorlib.wasm": "sha256-OH3kXneWqQMz6CUSo6POZqIeMqn9+5RR+IgHn5TnIwA=",
       "netstandard.wasm": "sha256-ZOswxXEbR2TmqjpbaBEdgr85Bv1NC4GwOwoJ+oxXM3M=",
       "System.Private.CoreLib.wasm": "sha256-I2w0iHf5nvSQyF1YE1VbgdTzmmz6a4OE6J7vo5wFa/4=",
-      "WalletWatch.Web.wasm": "sha256-+ZiwFdsSmc2XKW9uiKGIFPfFL8yi+hivtx/+TD9b36k="
+      "WalletWatch.Web.wasm": "sha256-hfqkRkzPlHS15vcpL+h6gJdN6xi8Ca7T/9xvvx/i00k="
     },
     "pdb": {
-      "WalletWatch.Web.pdb": "sha256-t+SsjZtL8sCk9zfz9Fg7dwh3lo82jmLOz51B/8A7DRc="
+      "WalletWatch.Web.pdb": "sha256-BVKXCseEa1I+rNLfS60k1SGgylouneZJLz+bi0Y7M9Y="
     },
     "satelliteResources": {
       "de": {

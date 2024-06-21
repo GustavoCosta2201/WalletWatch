@@ -10,12 +10,14 @@ namespace WalletWatch.API.Endpoints
         public static void AddEndpointsTransacoes(this WebApplication app)
         {
 
-            app.MapGet("/Transacoes/", ([FromServices] DAL<Transacoes> DAL) =>{
+            var GroupBuilder = app.MapGroup("Transacoes").RequireAuthorization().WithTags("Transacoes");
+
+            GroupBuilder.MapGet("", ([FromServices] DAL<Transacoes> DAL) =>{
 
                 return Results.Ok(DAL.Listar());
             });
 
-            app.MapGet("/Transacoes/{nome}", ([FromServices] DAL<Transacoes> DAL, string nome) =>
+            GroupBuilder.MapGet("/{nome}", ([FromServices] DAL<Transacoes> DAL, string nome) =>
             {
                 var recuperar = DAL.RecuperarPor(a => a.Descricao!.Equals(nome));
 
@@ -30,7 +32,7 @@ namespace WalletWatch.API.Endpoints
             });
 
 
-            app.MapGet("/Transacoes/{id:int}", ([FromServices] DAL<Transacoes> DAL, int id) =>
+            GroupBuilder.MapGet("/{id:int}", ([FromServices] DAL<Transacoes> DAL, int id) =>
             {
                 var recuperarid = DAL.RecuperarPor(i => i.Id_Transacao == id);
 
@@ -45,7 +47,7 @@ namespace WalletWatch.API.Endpoints
             });
 
 
-            app.MapPost("/Transacoes/", ([FromServices] DAL<Transacoes> DAL, TransacoesRequest request) =>
+            GroupBuilder.MapPost("", ([FromServices] DAL<Transacoes> DAL, TransacoesRequest request) =>
             {
 
                 var transacoes = new Transacoes(request.id_usuario, request.id_categoria, request.descricao, request.valor, request.data);
@@ -54,7 +56,7 @@ namespace WalletWatch.API.Endpoints
                 return Results.Ok(transacoes);
             });
 
-            app.MapDelete("/Transacoes/{id}", ([FromServices] DAL<Transacoes> DAL, int id) =>
+            GroupBuilder.MapDelete("/{id}", ([FromServices] DAL<Transacoes> DAL, int id) =>
             {
 
                 var recuperar = DAL.RecuperarPor(a => a.Id_Transacao.Equals(id));   
@@ -70,7 +72,7 @@ namespace WalletWatch.API.Endpoints
 
             });
 
-            app.MapPut("/Transacoes/{id_transacao}", ([FromServices] DAL<Transacoes> DAL, int id_transacao, TransacoesRequestEdit requestEdit) =>
+            GroupBuilder.MapPut("/{id_transacao}", ([FromServices] DAL<Transacoes> DAL, int id_transacao, TransacoesRequestEdit requestEdit) =>
             {
 
                 var recuperar = DAL.RecuperarPor(a => a.Id_Transacao == id_transacao);
@@ -93,6 +95,60 @@ namespace WalletWatch.API.Endpoints
                     return Results.NotFound();
                 }
 
+            });
+
+            GroupBuilder.MapGet("/ExportTransacoes", ([FromServices] DAL<Transacoes> DAL) =>
+            {
+                var transacoes = DAL.Listar();
+
+                string path = "C:\\WalletWatch-Files\\";
+                string FullPath = path + "ListaTransacoes.csv";
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                using (FileStream fs = File.Create(FullPath))
+                {
+                    fs.Close();
+                }
+
+                if (File.Exists(FullPath))
+                {
+                    using (StreamWriter sw = new StreamWriter(FullPath))
+                    {
+
+
+                        sw.WriteLine("Código da transacão\t  Descrição\t   Tipo\t");
+                        foreach (var transacao in transacoes)
+                        {
+                            var recuperarUsuario = DAL.RecuperarPor(u => u.Id_Usuario == transacao.Id_Usuario);
+                            var recuperarCategoria = DAL.RecuperarPor(u => u.Id_Categoria == transacao.Id_Categoria);
+
+                            if (recuperarUsuario != null)
+                            {
+                                sw.WriteLine($"{transacao.Id_Transacao}\t,{recuperarUsuario.Id_Usuario}\t,{recuperarCategoria?.Id_Categoria}\t, {transacao.Descricao}\t, {transacao.Valor}\t, {transacao.Data_Transacao}\t");
+                            }
+                            else
+                            {
+                                sw.WriteLine($"{transacao.Id_Transacao}\t, Usuário não encontrado \t,{recuperarCategoria?.Id_Categoria}\t, {transacao.Descricao}\t, {transacao.Valor}\t, {transacao.Data_Transacao}\t");
+                            }
+
+                            if (recuperarCategoria != null)
+                            {
+                                sw.WriteLine($"{transacao.Id_Transacao}\t,{recuperarUsuario?.Id_Usuario}\t,{recuperarCategoria?.Id_Categoria}\t, {transacao.Descricao}\t, {transacao.Valor}\t, {transacao.Data_Transacao}\t");
+                            }
+                            else
+                            {
+                                sw.WriteLine($"{transacao.Id_Transacao}\t, {recuperarUsuario?.Id_Usuario}\t,Categoria não encontrada\t, {transacao.Descricao}\t, {transacao.Valor}\t, {transacao.Data_Transacao}\t");
+                            }
+
+
+                        }
+                    }
+
+                }
             });
 
         }
